@@ -14,7 +14,7 @@ SECRET_KEY = '*3se1=g@!@e^dmpm8171p@h2n+s4i&xq+s4&9c&29d6v)unm=u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['recipe4everyone.herokuapp.com']
 
 
 # Application definition
