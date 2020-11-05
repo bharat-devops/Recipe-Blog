@@ -174,10 +174,9 @@
           </div>
           <div class="col-md-8">
             <div class="form-holder">
-              <form action="." method="POST">
-              {% csrf token %}
-              <!-- <form action="#">
-                <div class="form-group"> -->
+              <form action=".">
+                { csrf_token }
+                <div class="form-group">
                   <input type="email" name="email" id="email" placeholder="Type your email address">
                   <button type="submit" class="submit">Subscribe</button>
                 </div>
