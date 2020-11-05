@@ -14,7 +14,7 @@ SECRET_KEY = '*3se1=g@!@e^dmpm8171p@h2n+s4i&xq+s4&9c&29d6v)unm=u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['recipe4everyone.herokuapp.com']
+ALLOWED_HOSTS = ['recipe4everyone.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'posts',
 ]
 
 MIDDLEWARE = [
