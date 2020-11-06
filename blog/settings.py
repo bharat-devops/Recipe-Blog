@@ -141,4 +141,7 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+#del DATABASES['default']['OPTIONS']['sslmode']
+#DATABASES['default']['OPTIONS']['sslmode']
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
