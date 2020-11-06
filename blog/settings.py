@@ -2,16 +2,15 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
-from dotenv import load_dotenv
+import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ## CUSTOM Setting for .env file 
 dotenv_file = os.path.join(BASE_DIR, ".env")
-
 if os.path.isfile(dotenv_file):
-    load_dotenv(dotenv_file)
+    dotenv.load_dotenv(dotenv_file)
 
 
 
@@ -140,3 +139,6 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
