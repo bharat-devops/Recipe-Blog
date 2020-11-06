@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+#
 
 ## This database configuration uses sqlite on local and postgresql on Heroku. It uses .env and dj_database_url settings
 
