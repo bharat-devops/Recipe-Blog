@@ -11,10 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_file = os.path.join(BASE_DIR, ".env")
 
 if os.path.isfile(dotenv_file):
-    #load_dotenv(dotenv_file)
-    load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
-    #print("###################")
-    #print(os.environ['DATABASE_URL'])
+    load_dotenv(dotenv_file)
+
 
 
 # Quick-start development settings - unsuitable for production
