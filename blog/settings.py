@@ -141,7 +141,9 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600)
 # #del DATABASES['default']['OPTIONS']['sslmode']
 # #DATABASES['default']['OPTIONS']['sslmode']
 # options = DATABASES['default'].get('OPTIONS', {})
