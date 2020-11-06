@@ -7,13 +7,6 @@ import dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-## CUSTOM Setting for .env file 
-# dotenv_file = os.path.join(BASE_DIR, ".env")
-# if os.path.isfile(dotenv_file):
-#     dotenv.find_dotenv(dotenv_file)
-
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -74,23 +67,15 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-## This database configuration uses sqlite on local and postgresql on Heroku. It uses .env and dj_database_url settings
 
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
-## By default Heroku uses SSL with postgresql , to ignore that settings ..
-# django_heroku.settings(locals())
-# options = DATABASES['default'].get('OPTIONS', {})
-# options.pop('sslmode', None)
 
 
 # Password validation
@@ -141,13 +126,3 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-#django_heroku.settings(locals())
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600)
-# #del DATABASES['default']['OPTIONS']['sslmode']
-# #DATABASES['default']['OPTIONS']['sslmode']
-# options = DATABASES['default'].get('OPTIONS', {})
-# options.pop('sslmode', None)
-
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db_from_env)
