@@ -128,7 +128,7 @@ USE_TZ = True
 
 #### LOCAL FILE SETTINGS END ####
 
-### CONFIGURATION on S3 BUCKET ###
+#### CONFIGURATION on S3 BUCKET ###
 
 AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
 AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
