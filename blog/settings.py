@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
+#
 # This uses django_heroku
 django_heroku.settings(locals())
 
