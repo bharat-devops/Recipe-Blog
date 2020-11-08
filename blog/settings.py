@@ -116,7 +116,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 ### PREVIOUS CONFIGURATION on LOCAL FILE SYSTEMS ###
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATIC_URL = '/static/'
 # MEDIA_URL = '/media/'
 # STATICFILES_DIRS = [
@@ -151,8 +151,8 @@ AWS_LOCATION = 'feastbeast/static_in_env'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static_in_env'),
 ]
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATIC_ROOT = os.path.join(AWS_LOCATION, 'static_root')
-#MEDIA_ROOT = os.path.join(AWS_LOCATION, 'media_root')
+STATIC_ROOT = os.path.join(AWS_LOCATION, 'static_root')
+MEDIA_ROOT = os.path.join(AWS_LOCATION, 'media_root')
