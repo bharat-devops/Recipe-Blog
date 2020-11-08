@@ -151,5 +151,5 @@ STATICFILES_DIRS = [
 
 #STATIC_ROOT = os.path.join(AWS_LOCATION, 'static_root')
 
-DEFAULT_FILE_STORAGE = s3utils.MediaRootS3Boto3Storage
-STATICFILES_STORAGE = s3utils.StaticRootS3Boto3Storage
+DEFAULT_FILE_STORAGE = blog.s3utils.MediaRootS3Boto3Storage
+STATICFILES_STORAGE = blog.s3utils.StaticRootS3Boto3Storage
