@@ -129,30 +129,15 @@ USE_TZ = True
 #### LOCAL FILE SETTINGS END ####
 
 ### CONFIGURATION on S3 BUCKET ###
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATIC_URL = f'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-# AWS_DEFAULT_REGION = 'us-east-2'
-# AWS_S3_SIGNATURE_VERSION = "s3v4"
-#
-#AWS_ACCESS_KEY_ID = 'AKIA6Q6XHV5BPMCKPZYW'
-#AWS_SECRET_ACCESS_KEY = 'szlyTWl9kiK15YdjO+7dJ9d460Nj7lbHbjCSMTFf'
+
+AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
+AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
-AWS_DEFAULT_REGION = 'us-east-2'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_DEFAULT_REGION)
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_LOCATION = 'feastbeast/static_in_env'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_in_env'),
-]
-STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
+# you run `collectstatic`).
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATIC_ROOT = os.path.join(AWS_LOCATION, 'static_root')
-MEDIA_ROOT = os.path.join(AWS_LOCATION, 'media_root')
