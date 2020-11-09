@@ -174,6 +174,6 @@ print(MEDIA_URL)
 DEFAULT_FILE_STORAGE = 'blog.storage_backends.PublicMediaStorage'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static_in_env'),
 ]
 
