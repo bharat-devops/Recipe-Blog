@@ -3,7 +3,7 @@ import os
 import django_heroku
 import dj_database_url
 import dotenv
-import storage_backends
+from blog.storage_backends import StaticStorage, PublicMediaStorage
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
