@@ -162,12 +162,12 @@ AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 # s3 static settings
-STATIC_LOCATION = 'static_in_env'
+STATIC_LOCATION = 'static'
 STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
 print(STATIC_URL)
 STATICFILES_STORAGE = 'blog.storage_backends.StaticStorage'
 # s3 public media settings
-PUBLIC_MEDIA_LOCATION = 'media_in_env'
+PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
 print(MEDIA_URL)
 DEFAULT_FILE_STORAGE = 'blog.storage_backends.PublicMediaStorage'
