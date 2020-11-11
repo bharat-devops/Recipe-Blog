@@ -7,7 +7,7 @@ from django.db.models import Count
 def get_category_count():
     queryset = Post \
     .objects \
-    .annotate(Count('categories__title'))
+    .annotate(Count('categories__title')) \
     .values('categories__title') \
     .annotate(Count('categories__title'))
     return queryset
