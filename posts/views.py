@@ -6,7 +6,7 @@ from django.db.models import Count, Q
 
 
 def search(request):
-    post_list = Post.objects.all()
+    queryset = Post.objects.all()
     query = request.GET.get('q')
     if query:
         queryset = queryset.filter(
