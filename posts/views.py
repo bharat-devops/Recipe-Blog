@@ -13,7 +13,6 @@ def search(request):
             Q(title__icontains=query) |
             Q(overview__icontains=query)
         ).distinct()
-    
     context = {
         'queryset': queryset
 
