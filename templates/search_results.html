@@ -8,8 +8,9 @@
     This is the Result of your Search
 </h2>
 {% for post in queryset  %}
-    <a href="{{ post.get_absolute_url }}" >{{ post.title }}</a> 
-    </div>
-</div>
+    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> 
+
 {% endfor %}
+   </div>
+    </div>
 {% endblock %}
