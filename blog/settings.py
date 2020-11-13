@@ -198,6 +198,7 @@ STATICFILES_STORAGE = 'blog.storage_backends.StaticStorage'
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
 DEFAULT_FILE_STORAGE = 'blog.storage_backends.PublicMediaStorage'
+TINYMCE_JS_URL = 'http://%s/%s/js/tinymce.min.js' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
 # else:
 #     STATIC_URL = '/staticfiles/'
 #     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
