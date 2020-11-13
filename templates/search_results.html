@@ -7,8 +7,10 @@
 <h2>
     This is the Result of your Search
 </h2>
+</br>
 {% for post in queryset  %}
     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> 
+</br>
 
 {% endfor %}
    </div>
