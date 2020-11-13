@@ -188,6 +188,10 @@ TINYMCE_DEFAULT_CONFIG = {
 
 
 # aws settings
+
+# USE_S3 = os.getenv('USE_S3') == 'TRUE'
+
+# if USE_S3:
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
@@ -197,13 +201,16 @@ AWS_DEFAULT_ACL = 'public-read'
 ## s3 static settings
 STATIC_LOCATION = 'static'
 STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-print(STATIC_URL)
 STATICFILES_STORAGE = 'blog.storage_backends.StaticStorage'
 # s3 public media settings
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
-print(MEDIA_URL)
 DEFAULT_FILE_STORAGE = 'blog.storage_backends.PublicMediaStorage'
+# else:
+#     STATIC_URL = '/staticfiles/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     MEDIA_URL = '/mediafiles/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static_in_env'),
