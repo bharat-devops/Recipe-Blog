@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.flatpages.models import FlatPage
 from tinymce.widgets import TinyMCE
+from .models import Post
 
 
 
@@ -9,9 +10,10 @@ from tinymce.widgets import TinyMCE
 # 		return False
 
 
-class FlatPageForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
 
     content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
 
     class Meta:
-        model = FlatPage
+        model = Post
+        fields = '__all__'
