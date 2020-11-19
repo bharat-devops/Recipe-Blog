@@ -72,15 +72,15 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 ## Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 #
 # This uses django_heroku
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 
 
@@ -120,16 +120,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-### PREVIOUS CONFIGURATION on LOCAL FILE SYSTEMS ###
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static_in_env'),
-# ]
-# VENV_PATH = os.path.join(BASE_DIR)
-# STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
-# MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
+## PREVIOUS CONFIGURATION on LOCAL FILE SYSTEMS ###
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_in_env'),
+]
+VENV_PATH = os.path.join(BASE_DIR)
+STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
+MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 #### LOCAL FILE SETTINGS END ####
 
@@ -164,31 +164,56 @@ USE_TZ = True
 
 # aws settings
 
-# USE_S3 = os.getenv('USE_S3') == 'TRUE'
+# USE_S3 = os.getenv('USE_S3') == 'FALSE'
 
 # if USE_S3:
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
-AWS_DEFAULT_ACL = 'public-read'
-## s3 static settings
-STATIC_LOCATION = 'static'
-STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-STATICFILES_STORAGE = 'blog.storage_backends.StaticStorage'
-# s3 public media settings
-PUBLIC_MEDIA_LOCATION = 'media'
-MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
-DEFAULT_FILE_STORAGE = 'blog.storage_backends.PublicMediaStorage'
-TINYMCE_JS_URL = 'http://%s/%s/js/tinymce.min.js' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+#     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+#     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+#     AWS_STORAGE_BUCKET_NAME = 'feastbeast-bucket'
+#     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+#     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+#     AWS_DEFAULT_ACL = 'public-read'
+#     ## s3 static settings
+#     STATIC_LOCATION = 'static'
+#     STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+#     STATICFILES_STORAGE = 'blog.storage_backends.StaticStorage'
+#     # s3 public media settings
+#     PUBLIC_MEDIA_LOCATION = 'media'
+#     MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
+#     DEFAULT_FILE_STORAGE = 'blog.storage_backends.PublicMediaStorage'
+#     TINYMCE_JS_URL = 'http://%s/%s/js/tinymce.min.js' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
 # else:
-#     STATIC_URL = '/staticfiles/'
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#     MEDIA_URL = '/mediafiles/'
-#     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+# STATIC_URL = '/staticfiles/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_URL = '/mediafiles/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_in_env'),
+# ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_in_env'),
-]
-
+TINYMCE_DEFAULT_CONFIG = {
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists  charmap print  hr
+            anchor pagebreak
+            ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample |
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor |  code |
+            ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+}
