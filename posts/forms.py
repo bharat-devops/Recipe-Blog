@@ -5,18 +5,19 @@ from .models import Post, Comment
 
 
 
-# class TinyMCEWidget(TinyMCE):
-# 	def use_required_attribute(self, *args):
-# 		return False
+class TinyMCEWidget(TinyMCE):
+	def use_required_attribute(self, *args):
+		return False
 
 
 class PostForm(forms.ModelForm):
 
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    content = forms.CharField(widget=TinyMCE(
+        attrs={'cols': 80, 'rows': 30}))
 
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ('title','overview','content','thumbnail','categories','featured','previous_post','next_post')
 
 
 class CommentForm(forms.ModelForm):

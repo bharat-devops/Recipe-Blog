@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <script>
+        tinymce.init({
+            selector: 'textarea:not(.mceNoEditor)',
+            setup: function (ed) {
+                ed.on('submit', function (e) { ed.save(); });
+            }
+        });
+    </script>
+
+<div class="col-6 offset-4 mb-5 mt-5">
+    <h3>{{ title }} an Article</h3>
+    {{ form.media }}
+    <form method="POST" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-success" value="continue" type="submit" formnovalidate>Submit</button>
+    </form>
+
+</div>
+
+{% endblock content %}
