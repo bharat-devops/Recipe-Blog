@@ -106,19 +106,16 @@ def post_create(request):
     title = "Create"
     form = PostForm(request.POST or None, request.FILES or None)
     author = get_author(request.user)
-    print("author is ", author)
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author
-            print(form.instance.author)
-            form.save()
+            form.save(commit=False)
             return redirect(reverse("post-detail", kwargs={
                 'id': form.instance.id
             })) 
     context = {
         'title': title,
-        'form': form,
-        'author': author
+        'form': form
     }
     return render(request, "post_create.html", context)
 
