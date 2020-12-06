@@ -118,6 +118,7 @@ def post_create(request):
     context = {
         'title': title,
         'form': form
+        'author': author
     }
     return render(request, "post_create.html", context)
 
