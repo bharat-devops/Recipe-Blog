@@ -109,7 +109,7 @@ def post_create(request):
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author
-            form.save(commit=False)
+            form.save(commit=True)
             return redirect(reverse("post-detail", kwargs={
                 'id': form.instance.id
             })) 
