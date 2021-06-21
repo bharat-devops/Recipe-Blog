@@ -34,9 +34,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_otp',
     'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_static',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth_2fa',
     'tinymce',
     'posts',
     'marketing',
@@ -56,6 +58,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_otp.middleware.OTPMiddleware',
+    # Reset login flow middleware. If this middleware is included, the login
+    # flow is reset if another page is loaded between login and successfully
+    # entering two-factor credentials.
+    'allauth_2fa.middleware.AllauthTwoFactorMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -237,6 +243,8 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+# Set the allauth adapter to be the 2FA adapter.
+ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
